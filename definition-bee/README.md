@@ -1,8 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## What we built this with
 
-In the project directory, you can run:
+We used React, React Bootstrap, React-Router, Redux
 
 ### `npm start`
 

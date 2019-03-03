@@ -9,7 +9,7 @@ export default class Home extends Component {
     return (
       <Container>
         <Jumbotron className="jumboChalkboard">
-          <h2 className="homeChalk">Welcome to the Definition Bee.</h2>
+          <h2 className="homeChalkWhite">Welcome to the Definition Bee.</h2>
           <p className="homeChalk">
             Correctly spell the word for each definition that appears on the
             screen in <b>7 seconds or less.</b> For each correct answer you'll

@@ -64,3 +64,11 @@
   text-align: center;
   font-size: 1.7em;
 }
+.playCountdown {
+  text-align: center;
+  font-size: 1.2em;
+}
+.redStrike {
+  color: red;
+  font-weight: 900;
+}

@@ -4,6 +4,8 @@ import { Jumbotron, Container, Row, Col, Image, Button } from "react-bootstrap";
 import "./Home.css";
 import Countdown from "./Countdown";
 import Test from "./Test";
+import RandomWord from "./RandomWord";
+import LastGames from "./LastGames";
 
 export default class Home extends Component {
   render() {
@@ -25,6 +27,15 @@ export default class Home extends Component {
           <Col md={{ span: 6, offset: 3 }}>
             
           </Col>
+        </Row>
+        <Row> 
+            <Col>
+            <h2>Top 10 Definers</h2>
+            </Col>
+            <Col>
+            <h2>Last 10 Scores</h2>
+             <LastGames />
+            </Col>
         </Row>
       </Container>
     );

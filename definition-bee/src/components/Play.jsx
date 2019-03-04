@@ -4,6 +4,7 @@ import { Jumbotron, Container, Row, Col, Image, Button } from "react-bootstrap";
 import "./Home.css";
 import "./Play.css"
 import PlayCountdown from "./PlayCountdown";
+import LastGames from "./LastGames";
 
 export default class Play extends Component {
   render() {
@@ -73,50 +74,12 @@ export default class Play extends Component {
     </ol>
     </Col>
     <Col sm><h3>Last 10 Scores</h3>
-    <Row>
-<Col>Player 1</Col>
-<Col>102 Words</Col>
-    </Row>
-    <Row>
-<Col>Player 2</Col>
-<Col>12 Words</Col>
-    </Row>
-    <Row>
-<Col>Player 3</Col>
-<Col>54 Words</Col>
-    </Row>
-    <Row>
-<Col>HeyJude</Col>
-<Col>33 Words</Col>
-    </Row>
-    <Row>
-<Col>SomeOne</Col>
-<Col>509 Words</Col>
-    </Row>
-    <Row>
-<Col>Frank the Tank</Col>
-<Col>22 Words</Col>
-    </Row>
-    <Row>
-<Col>Zaphod</Col>
-<Col>42 Words</Col>
-    </Row>
-    <Row>
-<Col>AteItAll</Col>
-<Col>25 Words</Col>
-    </Row>
-    <Row>
-<Col>Num Nine</Col>
-<Col>102 Words</Col>
-    </Row>
-    <Row>
-<Col>Player 10</Col>
-<Col>102 Words</Col>
-    </Row>
-
+    <LastGames />
+    
     
     </Col>
   </Row>
+
       </Container>
     );
   }

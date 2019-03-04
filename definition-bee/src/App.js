@@ -6,21 +6,8 @@ import About from "./components/About";
 import Navbar from "./components/CustomNavbar";
 var unirest = require("unirest");
 
-
-
-
 class App extends Component {
   render() {
-
-    unirest
-    .get("https://wordsapiv1.p.rapidapi.com/words/robot")
-    .header(
-      "X-RapidAPI-Key",
-      "7ee2744e37mshd8a5306a0515f48p13e6a7jsn51a27e9f1337"
-    )
-    .end(function(result) {
-      console.log(result.body);
-    });
 
     return (
       <Router>

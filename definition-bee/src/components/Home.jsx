@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Jumbotron, Container, Row, Col, Image, Button } from "react-bootstrap";
 import "./Home.css";
 import Countdown from "./Countdown";
+import Test from "./Test";
 
 export default class Home extends Component {
   render() {
@@ -22,8 +23,7 @@ export default class Home extends Component {
         </Jumbotron>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
-            {" "}
-            <Countdown />
+            
           </Col>
         </Row>
       </Container>

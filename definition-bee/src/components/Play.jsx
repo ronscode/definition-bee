@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Jumbotron, Container, Row, Col, Image, Button } from "react-bootstrap";
+import { Jumbotron, Container, Row, Col, Image, Button, ToggleButtonGroup } from "react-bootstrap";
 import "./Home.css";
 import "./Play.css"
 import PlayCountdown from "./PlayCountdown";
 import LastGames from "./LastGames";
+import PlayPause from "./PlayPause"
 
 export default class Play extends Component {
   render() {
@@ -13,7 +14,7 @@ export default class Play extends Component {
 
   <Row>
     <Col className="p-4" sm={8}>
-    <h2>The Definition Is:</h2>
+    <h2>Correctly Define and Spell:</h2>
             <ol>
               <li>
                 (printing) a block of type without a raised letter; used for
@@ -28,6 +29,12 @@ export default class Play extends Component {
               </Col>
               <Col></Col>
             </Row>
+            
+            <Row>
+            <Col></Col>
+            <Col> <PlayPause /></Col>
+            <Col></Col>
+              </Row>
            
             <hr />
             <PlayCountdown /></Col>
@@ -35,52 +42,34 @@ export default class Play extends Component {
     <Jumbotron className="jumboChalkboard">
             <Col>
               <h2 className="homeChalkWhite">SCOREBOARD</h2>
-              <p>10 words correctly spelled in a row</p>
+              <p>10 points</p>
               <hr />
-              <Row>
+              <Row className="strikesBox">
                 <Col>
                   <h3>STRIKES</h3>
-                  <h3 className="redStrike">X X</h3>
+                  <Row className="strikeCount">
+                  <Col className="strike">X</Col>
+                  <Col className="noStrike">X</Col>
+                  <Col className="noStrike">X</Col>
+                  </Row>
+
                 </Col>
                 <Col>
                   <h3>SKIPS</h3>
-                  <h3 className="blueSkip">S S</h3>
-                </Col>
-                <Col>
-                  <h3 className="redStrike"> </h3>
-                </Col>
+                  <Row className="skipCount">
+                  <Col className="skip">X</Col>
+                  <Col className="skip">X</Col>
+                  <Col className="usedSkip">X</Col>
+                  </Row>                </Col>
               </Row>
             </Col>
           </Jumbotron>
     </Col>
   </Row>
-  <Row>
-    <Col sm><h3>Correctly Spelled History</h3>
-    <p>burly | slimy | spoil | size | legs | questionable | terrific | furry | acrid | enthusiastic | ancient | road | babies | weather | cakes | increase | drain | green | brave | encouraging</p>
-    </Col>
-    <Col sm><h3>Top 10 Players</h3>
-    <ol>
-      <li>Mario</li>
-      <li>Zelda</li>
-      <li>Donkey Kong</li>
-      <li>Zaphod</li>
-      <li>Luke</li>
-      <li>Luigi</li>
-      <li>Halo Guy</li>
-      <li>Kirby</li>
-      <li>Micky</li>
-      <li>Charzar</li>
-
-    </ol>
-    </Col>
-    <Col sm><h3>Last 10 Scores</h3>
-    <LastGames />
-    
-    
-    </Col>
-  </Row>
-
+   
+      
       </Container>
     );
   }
 }
+

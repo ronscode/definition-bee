@@ -4,7 +4,7 @@ class PlayCountdown extends Component {
   // We need to redo this code I just copy pasted it to keep it moving. Prob a better React way to do this.
 
   render() {
-    var timeleft = 7;
+    var timeleft = 11;
     var downloadTimer = setInterval(function() {
       document.getElementById("countdown").innerHTML =
         timeleft + " seconds remaining...";

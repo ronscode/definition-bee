@@ -6,3 +6,39 @@
     border: 1.5px solid;
 
 }
+.strikesBox {
+    border: 1px solid darkmagenta;
+    padding: 10px;
+}
+.skipsBox {
+    border: 1px solid white;
+    padding: 10px;
+}
+.noStrike {
+    color: grey;
+    font-weight: 900;
+    font-size: 2.5em;
+    border: 1px solid slategrey;
+    text-align: center;
+}
+.strike {
+    color: red;
+    font-weight: 900;
+    font-size: 2.5em;
+    border: 1px solid slategrey;
+    text-align: center;
+}
+.usedSkip {
+    color: grey;
+    font-weight: 900;
+    font-size: 2.5em;
+    border: 1px solid slategrey;
+    text-align: center;
+}
+.skip {
+    color: blue;
+    font-weight: 900;
+    font-size: 2.5em;
+    border: 1px solid slategrey;
+    text-align: center;
+}

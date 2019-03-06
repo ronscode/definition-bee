@@ -1,20 +1,14 @@
 import React, { Component } from "react";
-import { Button } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Play from "./components/Play";
 import About from "./components/About";
 import Navbar from "./components/CustomNavbar";
-
 var unirest = require("unirest");
-const RapidAPI = require("rapidapi-connect");
-const rapid = new RapidAPI(
-  "DefinitionBee",
-  "7ee2744e37mshd8a5306a0515f48p13e6a7jsn51a27e9f1337"
-);
 
 class App extends Component {
   render() {
+
     return (
       <Router>
         <div>

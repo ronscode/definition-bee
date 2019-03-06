@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home";
@@ -21,6 +22,25 @@ class App extends Component {
     );
   }
 }
+
+
+let mapStateToProps = (state) =>{
+  return {
+    definition : state.definition
+    
+  }
+}
+
+// }
+// let mapDispatchToProps = (dispatch) =>{
+
+// }
+
+export default connect(
+  mapStateToProps,
+  null
+
+)(App);
 
 export default App;
 
@@ -76,3 +96,4 @@ export default App;
 //     }
 //   }
 // }
+

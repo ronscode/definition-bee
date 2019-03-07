@@ -16,9 +16,11 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "mongoose": "^5.4.17",
+    "mongoose-simple-random": "^0.4.1",
     "morgan": "~1.9.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "pg-promise": "^8.5.6"
+    "pg-promise": "^8.5.6",
+    "react-bootstrap": "^1.0.0-beta.5"
   }
 }

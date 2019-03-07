@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, Container, Row, Col, Image, Button } from "react-bootstrap";
 
-import axios from 'axios';
-var unirest = require("unirest");
+//var unirest = require("unirest");
 
 
 

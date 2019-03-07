@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import Play from "./components/Play";
 import About from "./components/About";
 import Navbar from "./components/CustomNavbar";
-var unirest = require("unirest");
+// var unirest = require("unirest");
 
 class App extends Component {
   render() {
@@ -24,23 +24,23 @@ class App extends Component {
 }
 
 
-let mapStateToProps = (state) =>{
-  return {
-    definition : state.definition
+// let mapStateToProps = (state) =>{
+//   return {
+//     definition : state.definition
     
-  }
-}
+//   }
+// }
 
 // }
 // let mapDispatchToProps = (dispatch) =>{
 
 // }
 
-export default connect(
-  mapStateToProps,
-  null
+// export default connect(
+//   mapStateToProps,
+//   null
 
-)(App);
+// )(App);
 
 export default App;
 

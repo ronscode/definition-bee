@@ -75,27 +75,13 @@ let reducer = (state = initialState, actions) =>{
         /**
          * Once users select to start the game the game the de
          */
-         return {
-            
+         return { 
+            ...state,
+            defintion : state.definition  
          }
 
         case "RIGHT_ANSWER":
-        /**
-         * check the answer against the word from api call and move on to the next question
-         * if right{
-         *      up date score 
-         *      increase question number
-         *      new defintion
-         *      if score is greater than high score new high score equal current points
-         *      reset timer
-         * }
-         * 
-         * if wrong {
-         *      take away a life/ or add strike
-         *      if three strike move on to the next question
-         *      
-         * }
-         */
+        
         return {
             ...state,
             defintition : state.definition,
@@ -109,16 +95,6 @@ let reducer = (state = initialState, actions) =>{
             defintition : state.definition,
             strike : state.strike +1,
 
-        }
-
-        case  "GET_A_HINT" :
-        /**
-         * a hint to the word will appear on the screen
-         * decrease life -1
-         */
-        return {
-            ...state,
-            example : state.result.example
         }
 
         case "SKIP":

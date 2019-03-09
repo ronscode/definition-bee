@@ -21,13 +21,21 @@ exports.product_create = function (req, res) {
 };
 
 //reads existing definition from id being sent in request from router 
-exports.product_details = (req, res) =>{
-    Definition.findById(req.params.id, function (err, def) {
-        if (err)next(err);
-        res.send(def);
-        //console.log(definition)
-    })
+// exports.product_details = (req, res) =>{
+//     Definition.findById(req.params.id, function (err, def) {
+//         if (err)next(err);
+//         res.send(def);
+//         //console.log(definition)
+//     })
 
+// };
+
+
+exports.random_details = (req, res) =>{
+    Definition.findOneRandom( (err, definition) => {
+        if (err) console.log(err);
+        else res.send(definition);
+    })
 };
 
 

@@ -2,20 +2,22 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home";
-import Play from "./components/Play";
+import PlayContainer from "./containers/playContainer";
 import About from "./components/About";
 import Navbar from "./components/CustomNavbar";
+import  { connect } from 'react-redux'
 var unirest = require("unirest");
 
 class App extends Component {
   render() {
 
     return (
+
       <Router>
         <div>
           <Navbar />
           <Route exact path="/" component={Home} />
-          <Route path="/play" component={Play} />
+          <Route path="/play" component={PlayContainer} />
           <Route path="/about" component={About} />
         </div>
       </Router>
@@ -24,25 +26,10 @@ class App extends Component {
 }
 
 
-let mapStateToProps = (state) =>{
-  return {
-    definition : state.definition
-    
-  }
-}
-
-// }
-// let mapDispatchToProps = (dispatch) =>{
-
-// }
-
-export default connect(
-  mapStateToProps,
-  null
-
-)(App);
 
 export default App;
+
+// export default App;
 
 // // Old code I'm saving
 // var unirest = require("unirest");

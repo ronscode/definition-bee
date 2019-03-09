@@ -23,30 +23,32 @@
 //   }
 
 let initialState = {
-    definition: [
-        { 
-          word : '',
-          defintion : ''
-        }
-    ],
-    example : '',
+    question: { 
+
+        word : '',
+        defintion : ''
+
+    },
     questionNumber : 0,
     answer: '',
     score: 0,
     strike : 0,
     skips: 0,
-    highScore : [],
-    history : [],
+    highScores : [],
+    // history : [],
     startedAt: undefined,
     stoppedAt: undefined,
-    baseTime: undefined
+    baseTime: undefined,
+    currentUser: {
+        username: "lsjhfdsl"
+    }
 }
 
 
 let reducer = (state = initialState, actions) =>{
 
-    let { type } = actions
-
+    let { type, submittedAnswer, definition } = actions
+    console.log("yo")
     switch(type){
         
         // case "RESET_TIMER":
@@ -75,11 +77,15 @@ let reducer = (state = initialState, actions) =>{
         /**
          * Once users select to start the game the game the de
          */
-         return {
-            
-         }
+            return {
+                ...state,
+                question: definition,
+                score : 0,
+                strike:0,
+                skips: 0
+            }
 
-        case "RIGHT_ANSWER":
+
         /**
          * check the answer against the word from api call and move on to the next question
          * if right{
@@ -96,30 +102,31 @@ let reducer = (state = initialState, actions) =>{
          *      
          * }
          */
-        return {
-            ...state,
-            defintition : state.definition,
-            score: state.score +1,
             
-        }
 
-        case "WRONG_ANSWER":
-        return {
-            ...state,
-            defintition : state.definition,
-            strike : state.strike +1,
 
-        }
+        case "ANSWER": 
+            if (submittedAnswer == state.definition.word) {
+                return {
+                    ...state,
+                    score: state.score + 1
+                }
+            } else {
+                return {
+                    ...state,
+                    score: state.score - 1,
+                    strike : state.strike + 1
+                }
+            }
 
-        case  "GET_A_HINT" :
-        /**
-         * a hint to the word will appear on the screen
-         * decrease life -1
-         */
-        return {
-            ...state,
-            example : state.result.example
-        }
+
+
+        case "LOAD_DEFINITION":
+            console.log(definition)
+            return {
+                ...state,
+                question: definition
+            }
 
         case "SKIP":
         /**
@@ -129,13 +136,20 @@ let reducer = (state = initialState, actions) =>{
          * decrease life - 1
          */
 
-        return{
-            ...state,
-            defintion : state.defintion,
-            strike : state.strike +1
-        }
+            return{
+                ...state,
+                strike : state.strike +1
+            }
 
-        default:
+        case "SUBMIT_SCORE":
+        // axios.post('/scores/record', {points: state.score}).then(() => {
+            return {
+
+            }
+            
+
+        default :
+
             return{
                 ...state
             }

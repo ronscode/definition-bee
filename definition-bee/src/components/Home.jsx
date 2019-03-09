@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Jumbotron, Container, Row, Col, Image, Button } from "react-bootstrap";
 import "./Home.css";
-import Countdown from "./Countdown";
-import Test from "./Test";
-import RandomWord from "./RandomWord";
 import LastGames from "./LastGames";
 
 export default class Home extends Component {

@@ -4,11 +4,10 @@ import Home from "./components/Home";
 import Play from "./components/Play";
 import About from "./components/About";
 import Navbar from "./components/CustomNavbar";
-var unirest = require("unirest");
+import AddWord from "./components/AddWord";
 
 class App extends Component {
   render() {
-
     return (
       <Router>
         <div>
@@ -16,6 +15,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/play" component={Play} />
           <Route path="/about" component={About} />
+          <Route path="/addWord" component={AddWord} />
         </div>
       </Router>
     );

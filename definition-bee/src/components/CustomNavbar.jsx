@@ -9,7 +9,7 @@ export default class CustomNavbar extends Component {
         <Navbar.Brand href="/">
           <img
             alt=""
-            src="/logo.svg"
+            src="/images/bee.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
@@ -20,6 +20,7 @@ export default class CustomNavbar extends Component {
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/play">Play</Nav.Link>
           <Nav.Link href="/about">About</Nav.Link>
+          <Nav.Link href="/addword">AddWord</Nav.Link>
         </Nav>
       </Navbar>
     );

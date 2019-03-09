@@ -18,7 +18,7 @@ const mapStateToProps=(state)=>{
 const mapDispatchToProps = (dispatch)=>{
     return{
         loadGame : (definition) => dispatch({ type: "LOAD_GAME", definition: definition }),
-        answer : (answer) => dispatch({ type: "ANSWER", answer : answer }),
+        answer : (answer) => dispatch({ type: "ANSWER", submittedAnswer : answer }),
         loadDefinition : (definition) => {
             console.log()
             dispatch({ type: "LOAD_DEFINITION" , definition: definition})

@@ -1,9 +1,9 @@
 import React from "react";
 import { Jumbotron, Container, Row, Col, Image, Button, ToggleButtonGroup } from "react-bootstrap";
 import "./Home.css";
-import "./Play.css"
-import axios from 'axios'
-import PlayCountdown from "./PlayCountdown";
+import "./Play.css";
+import axios from 'axios';
+
 
 
 
@@ -13,14 +13,14 @@ let Play = ({loadDefinition, loadGame, word, questionNumber, answer, score, stri
   const startGame = ()=>{
     axios.get('/definition/random').then(({data}) => {
       loadGame(data)
-      console.log(data)
         // dispatch({type: "LOAD_DEFINITON", definition: data.definition});
     }).catch()
   }
 
   const submitAnswer = (e)=> {
     e.preventDefault()
-    answer(e.target)
+    answer(e.target.value)
+    console.log(e.target.value)
     // dispatch({type: "ANSWER", submittedAnswer: e.target.value})
     axios.get('/definition/random').then(({data}) => {
       loadDefinition(data)
@@ -45,13 +45,14 @@ let Play = ({loadDefinition, loadGame, word, questionNumber, answer, score, stri
             <Row>
               <Col></Col>
               <Col>
-              <form onSubmit = {()=>submitAnswer}>
+              <form>
                 <input className="definitionAnswer" type="text" />
               </form>
               
               <button onClick = {()=>startGame()}>Play</button>
+              <button onClick = {(e) => submitAnswer(e)}>Submit</button>
               </Col>
-              <Col></Col>
+              
             </Row>
             
             <Row>
@@ -66,15 +67,15 @@ let Play = ({loadDefinition, loadGame, word, questionNumber, answer, score, stri
     <Jumbotron className="jumboChalkboard">
             <Col>
               <h2 className="homeChalkWhite">SCOREBOARD</h2>
-              <p>10 points</p>
+              <p>{score} points</p>
               <hr />
               <Row className="strikesBox">
                 <Col>
                   <h3>STRIKES</h3>
                   <Row className="strikeCount">
-                  <Col className="strike">X</Col>
-                  <Col className="noStrike">X</Col>
-                  <Col className="noStrike">X</Col>
+                  <Col className="strike">{strike}</Col>
+                  {/* <Col className="noStrike">X</Col>
+                  <Col className="noStrike">X</Col> */}
                   </Row>
 
                 </Col>

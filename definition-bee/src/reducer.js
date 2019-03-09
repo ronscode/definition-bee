@@ -48,7 +48,6 @@ let initialState = {
 let reducer = (state = initialState, actions) =>{
 
     let { type, submittedAnswer, definition } = actions
-    console.log("yo")
     switch(type){
         
         // case "RESET_TIMER":
@@ -106,20 +105,19 @@ let reducer = (state = initialState, actions) =>{
 
 
         case "ANSWER": 
-            if (submittedAnswer == state.definition.word) {
+            console.log(submittedAnswer)
+            if (submittedAnswer === state.question.word) {
                 return {
                     ...state,
-                    score: state.score + 1
+                    //score: state.score++,
                 }
             } else {
                 return {
                     ...state,
                     score: state.score - 1,
-                    strike : state.strike + 1
+                    strike : state.strike++
                 }
             }
-
-
 
         case "LOAD_DEFINITION":
             console.log(definition)

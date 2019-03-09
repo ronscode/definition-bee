@@ -1,43 +1,67 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import { Jumbotron, Container, Row, Col, Image, Button, ToggleButtonGroup } from "react-bootstrap";
 import "./Home.css";
 import "./Play.css"
+import axios from 'axios'
 import PlayCountdown from "./PlayCountdown";
-import LastGames from "./LastGames";
-import PlayPause from "./PlayPause"
 
-export default class Play extends Component {
-  render() {
+
+
+let Play = ({loadDefinition, loadGame, word, questionNumber, answer, score, strike, skips, definition}) => {
+
+
+  const startGame = ()=>{
+    axios.get('/definition/random').then(({data}) => {
+      loadGame(data)
+      console.log(data)
+        // dispatch({type: "LOAD_DEFINITON", definition: data.definition});
+    }).catch()
+  }
+
+  const submitAnswer = (e)=> {
+    e.preventDefault()
+    answer(e.target)
+    // dispatch({type: "ANSWER", submittedAnswer: e.target.value})
+    axios.get('/definition/random').then(({data}) => {
+      loadDefinition(data)
+      console.log(data)
+        // dispatch({type: "LOAD_DEFINITON", definition: data.definition});
+    }).catch()
+  }
+
+
+
+
     return (
       <Container>
 
   <Row>
     <Col className="p-4" sm={8}>
     <h2>Correctly Define and Spell:</h2>
-            <ol>
-              <li>
-                (printing) a block of type without a raised letter; used for
-                spacing between words or sentences
-              </li>
-              <li>the unlimited expanse in which everything is located</li>
-            </ol>
+        
+              <div>
+                {definition}
+              </div>
             <Row>
               <Col></Col>
               <Col>
-              <input className="definitionAnswer" type="text" />
+              <form onSubmit = {()=>submitAnswer}>
+                <input className="definitionAnswer" type="text" />
+              </form>
+              
+              <button onClick = {()=>startGame()}>Play</button>
               </Col>
               <Col></Col>
             </Row>
             
             <Row>
             <Col></Col>
-            <Col> <PlayPause /></Col>
+            {/* <Col> <PlayPause /></Col> */}
             <Col></Col>
               </Row>
            
             <hr />
-            <PlayCountdown /></Col>
+            </Col>
     <Col sm={4}>
     <Jumbotron className="jumboChalkboard">
             <Col>
@@ -71,5 +95,6 @@ export default class Play extends Component {
       </Container>
     );
   }
-}
+  export default  Play
+
 

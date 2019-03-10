@@ -23,8 +23,9 @@ const mapDispatchToProps = (dispatch)=>{
             console.log()
             dispatch({ type: "LOAD_DEFINITION" , definition: definition})
         },
-        skip : () => dispatch({ type: "SKIP" })
-        //checkStrike : (strikes) => dispatch({type : "CHECK_STRIKE", strikeCount : strikes})
+        skip : () => dispatch({ type: "SKIP" }),
+        checkStrike : () => dispatch({type : "CHECK_STRIKE"})
+        
     }
 }
 

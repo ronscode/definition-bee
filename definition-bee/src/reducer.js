@@ -47,7 +47,7 @@ let initialState = {
 
 let reducer = (state = initialState, actions) =>{
 
-    let { type, submittedAnswer, definition, strikeCount  } = actions
+    let { type, submittedAnswer, definition } = actions
     switch(type){
         
         // case "RESET_TIMER":
@@ -106,13 +106,10 @@ let reducer = (state = initialState, actions) =>{
         case "CHECK_ANSWER": 
             
             if (submittedAnswer === state.question.word) {
-                
                 return {
                     ...state,
                     questionNumber: state.questionNumber  + 1,
                     score: state.score + 1,
-
-                    
                 }
             } else {
                 return {
@@ -142,23 +139,20 @@ let reducer = (state = initialState, actions) =>{
             }
 
         case "SUBMIT_SCORE":
-        // axios.post('/scores/record', {points: state.score}).then(() => {
             return {
 
             }
          
-        // case 'CHECK_STRIKE' :
-
-        // if( strikeCount === state.strike){
-        //     return {
-        //         state
-        //     }
-        // }else{
-        //     return{
-        //         ...state
-        //     }
-        // }
-            
+        case 'CHECK_STRIKE' :
+        if (state.strike === 3){
+            return{
+                ...initialState
+            } 
+        }else{
+            return{
+                ...state
+            }
+        }
 
         default :
 
@@ -166,9 +160,6 @@ let reducer = (state = initialState, actions) =>{
                 ...state
             }
     }
-
-    
-
 }
 
 export default reducer

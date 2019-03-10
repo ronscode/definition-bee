@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 
-let Play = ({loadDefinition, loadGame, word, questionNumber, answer, score, strike, skips, definition}) => {
+let Play = ({loadDefinition, loadGame, word, questionNumber, answer, score, strike, skips, definition, checkStrike}) => {
 
 
   const startGame = ()=>{
@@ -21,7 +21,8 @@ let Play = ({loadDefinition, loadGame, word, questionNumber, answer, score, stri
     e.preventDefault()
     let ans = document.getElementById("answer").value;
     answer(ans.toLowerCase())
-    //checkStrike(strike)
+    checkStrike()
+    
     // console.log(e.target.value)
     // dispatch({type: "ANSWER", submittedAnswer: e.target.value})
     axios.get('/definition/random').then(({data}) => {

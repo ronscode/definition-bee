@@ -26,14 +26,14 @@ let initialState = {
     question: { 
 
         word : '',
-        defintion : ''
+        definition : ''
 
     },
-    questionNumber : 0,
+    questionNumber : 1,
     answer: '',
     score: 0,
     strike : 0,
-    skips: 0,
+    skips: 3,
     highScores : [],
     // history : [],
     startedAt: undefined,
@@ -47,7 +47,7 @@ let initialState = {
 
 let reducer = (state = initialState, actions) =>{
 
-    let { type, submittedAnswer, definition } = actions
+    let { type, submittedAnswer, definition, strikeCount  } = actions
     switch(type){
         
         // case "RESET_TIMER":
@@ -82,8 +82,7 @@ let reducer = (state = initialState, actions) =>{
                 score : 0,
                 strike:0,
                 skips: 0
-            }
-
+            }    
 
         /**
          * check the answer against the word from api call and move on to the next question
@@ -101,26 +100,29 @@ let reducer = (state = initialState, actions) =>{
          *      
          * }
          */
+          
+        
+   
+        case "CHECK_ANSWER": 
             
-
-
-        case "ANSWER": 
-            console.log(submittedAnswer)
             if (submittedAnswer === state.question.word) {
+                
                 return {
                     ...state,
-                    //score: state.score++,
+                    questionNumber: state.questionNumber  + 1,
+                    score: state.score + 1,
+
+                    
                 }
             } else {
                 return {
                     ...state,
-                    score: state.score - 1,
-                    strike : state.strike++
+                    strike : state.strike + 1
                 }
             }
 
         case "LOAD_DEFINITION":
-            console.log(definition)
+            //console.log(definition)
             return {
                 ...state,
                 question: definition
@@ -144,6 +146,18 @@ let reducer = (state = initialState, actions) =>{
             return {
 
             }
+         
+        // case 'CHECK_STRIKE' :
+
+        // if( strikeCount === state.strike){
+        //     return {
+        //         state
+        //     }
+        // }else{
+        //     return{
+        //         ...state
+        //     }
+        // }
             
 
         default :

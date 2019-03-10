@@ -10,7 +10,7 @@ const mapStateToProps=(state)=>{
         questionNumber : state.questionNumber,
         answer: state.answer,
         score: state.score,
-        strike : state.score,
+        strike : state.strike,
         skips: state.skips
     }
 }
@@ -18,12 +18,13 @@ const mapStateToProps=(state)=>{
 const mapDispatchToProps = (dispatch)=>{
     return{
         loadGame : (definition) => dispatch({ type: "LOAD_GAME", definition: definition }),
-        answer : (answer) => dispatch({ type: "ANSWER", submittedAnswer : answer }),
+        answer : (answer) => dispatch({ type: "CHECK_ANSWER", submittedAnswer : answer }),
         loadDefinition : (definition) => {
             console.log()
             dispatch({ type: "LOAD_DEFINITION" , definition: definition})
         },
         skip : () => dispatch({ type: "SKIP" })
+        //checkStrike : (strikes) => dispatch({type : "CHECK_STRIKE", strikeCount : strikes})
     }
 }
 

@@ -19,14 +19,16 @@ let Play = ({loadDefinition, loadGame, word, questionNumber, answer, score, stri
 
   const submitAnswer = (e)=> {
     e.preventDefault()
-    answer(e.target.value)
-    console.log(e.target.value)
+    let ans = document.getElementById("answer").value;
+    answer(ans.toLowerCase())
+    //checkStrike(strike)
+    // console.log(e.target.value)
     // dispatch({type: "ANSWER", submittedAnswer: e.target.value})
     axios.get('/definition/random').then(({data}) => {
       loadDefinition(data)
-      console.log(data)
+      //console.log(data)
         // dispatch({type: "LOAD_DEFINITON", definition: data.definition});
-    }).catch()
+    })
   }
 
 
@@ -40,17 +42,20 @@ let Play = ({loadDefinition, loadGame, word, questionNumber, answer, score, stri
     <h2>Correctly Define and Spell:</h2>
         
               <div>
+                {questionNumber}
+                <br/>
                 {definition}
               </div>
             <Row>
               <Col></Col>
               <Col>
               <form>
-                <input className="definitionAnswer" type="text" />
+                <input id = "answer" className="definitionAnswer" type = "text" />
+                <button onClick = {(e) => submitAnswer(e)}>Submit</button>
               </form>
               
-              <button onClick = {()=>startGame()}>Play</button>
-              <button onClick = {(e) => submitAnswer(e)}>Submit</button>
+          
+              
               </Col>
               
             </Row>
@@ -62,6 +67,7 @@ let Play = ({loadDefinition, loadGame, word, questionNumber, answer, score, stri
               </Row>
            
             <hr />
+            <button onClick = {()=>startGame()}>Play</button>
             </Col>
     <Col sm={4}>
     <Jumbotron className="jumboChalkboard">

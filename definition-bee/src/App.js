@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home";
 import PlayContainer from "./containers/playContainer";
 import About from "./components/About";
+import Login from "./components/Login";
 import Navbar from "./components/CustomNavbar";
 import { connect } from "react-redux";
 var unirest = require("unirest");
@@ -16,6 +17,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/play" component={PlayContainer} />
           <Route path="/about" component={About} />
+          <Route path="/login" component={Login} />
         </div>
       </Router>
     );

@@ -28,9 +28,10 @@ export default class CountDownTimer extends React.Component {
         ]}
       >
         {() => (
-          <div>
-            <Timer.Seconds /> seconds COMPONENT CountDownTimer check console for
-            callback functions
+          <div className="timer">
+            <Timer.Seconds /> seconds remain
+            <hr />
+            <p>COMPONENT CountDownTimer check console for callback functions</p>
           </div>
         )}
       </Timer>

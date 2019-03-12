@@ -58,23 +58,44 @@ let Play = ({
     render() {
       return (
         <div>
-          <h3>The Strike Count Is</h3>
-          <p>
-            {(() => {
-              switch (strike) {
-                case 0:
-                  return <span className="strike"> </span>;
-                case 1:
-                  return <span className="strike">X</span>;
-                case 2:
-                  return <span className="strike">X X</span>;
-                case 3:
-                  return <span className="strike">X X X</span>;
-                default:
-                  return "#FFFFFF";
-              }
-            })()}
-          </p>
+          {(() => {
+            switch (strike) {
+              case 0:
+                return (
+                  <Row className="strikeCount">
+                    <Col className="noStrike">X</Col>
+                    <Col className="noStrike">X</Col>
+                    <Col className="noStrike">X</Col>
+                  </Row>
+                );
+              case 1:
+                return (
+                  <Row className="strikeCount">
+                    <Col className="strike">X</Col>
+                    <Col className="noStrike">X</Col>
+                    <Col className="noStrike">X</Col>
+                  </Row>
+                );
+              case 2:
+                return (
+                  <Row className="strikeCount">
+                    <Col className="strike">X</Col>
+                    <Col className="strike">X</Col>
+                    <Col className="noStrike">X</Col>
+                  </Row>
+                );
+              case 3:
+                return (
+                  <Row className="strikeCount">
+                    <Col className="strike">X</Col>
+                    <Col className="strike">X</Col>
+                    <Col className="strike">X</Col>
+                  </Row>
+                );
+              default:
+                return "#FFFFFF";
+            }
+          })()}
         </div>
       );
     }
@@ -84,10 +105,9 @@ let Play = ({
     <Container>
       <Row>
         <Col className="p-4" sm={8}>
-          <h2>Correctly Define and Spell:</h2>
+          <h2 className="center">Correctly Define and Spell:</h2>
 
-          <div>
-            {questionNumber}
+          <div className="definitionContainer p-4">
             <br />
             {definition}
           </div>
@@ -96,21 +116,38 @@ let Play = ({
             <Col>
               <form>
                 <input id="answer" className="definitionAnswer" type="text" />
-                <button onClick={e => submitAnswer(e)}>Submit</button>
+                <button
+                  className="btn-info btn-block btn-lg"
+                  onClick={e => submitAnswer(e)}
+                >
+                  Submit
+                </button>
               </form>
             </Col>
+            <Col />
           </Row>
 
           <Row>
             <Col />
-            <CountDownTimer />
-            <hr />
+            <Col>
+              <CountDownTimer />
+            </Col>
 
             <Col />
           </Row>
 
-          <hr />
-          <button onClick={() => startGame()}>Play</button>
+          <Row>
+            <Col />
+            <Col>
+              <button
+                className="btn-warning btn-md btn-block"
+                onClick={() => startGame()}
+              >
+                Play
+              </button>
+            </Col>
+            <Col />
+          </Row>
         </Col>
         <Col sm={4}>
           <Jumbotron className="jumboChalkboard">
@@ -121,22 +158,15 @@ let Play = ({
               <Row className="strikesBox">
                 <Col>
                   <h3>STRIKES</h3>
-                  <Row className="strikeCount">
-                    <Col className="strike">
-                      <hr />
-                      <StrikeCount />
-                      {console.log("the count is " + strike)}
-                    </Col>
-                    {/* <Col className="noStrike">X</Col>
-                  <Col className="noStrike">X</Col> */}
-                  </Row>
+                  <StrikeCount />
+                  {console.log("the count is " + strike)}
                 </Col>
                 <Col>
                   <h3>SKIPS</h3>
                   <Row className="skipCount">
                     <Col className="skip">S</Col>
                     <Col className="skip">S</Col>
-                    <Col className="usedSkip">S</Col>
+                    <Col className="skip">S</Col>
                   </Row>{" "}
                 </Col>
 

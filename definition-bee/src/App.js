@@ -1,18 +1,15 @@
-
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home";
 import PlayContainer from "./containers/playContainer";
 import About from "./components/About";
 import Navbar from "./components/CustomNavbar";
-import  { connect } from 'react-redux'
+import { connect } from "react-redux";
 var unirest = require("unirest");
 
 class App extends Component {
   render() {
-
     return (
-
       <Router>
         <div>
           <Navbar />
@@ -24,8 +21,6 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;
 
@@ -83,4 +78,3 @@ export default App;
 //     }
 //   }
 // }
-

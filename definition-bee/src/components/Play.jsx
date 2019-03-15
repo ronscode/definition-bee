@@ -16,7 +16,7 @@ import axios from "axios";
 import Timer from "react-compound-timer";
 import "./CountDownTimer";
 import CountDownTimer from "./CountDownTimer";
-import GameOverContainer from '../containers/gameOverContainer'
+import GameOverContainer from "../containers/gameOverContainer";
 
 let Play = ({
   loadDefinition,
@@ -30,7 +30,6 @@ let Play = ({
   definition,
   checkStrike
 }) => {
-
   const startGame = () => {
     axios
       .get("/definition/random")
@@ -44,14 +43,15 @@ let Play = ({
   const submitAnswer = e => {
     e.preventDefault();
     let ans = document.getElementById("answer").value;
+
     answer(ans.toLowerCase());
     axios.get("/definition/random").then(({ data }) => {
       loadDefinition(data);
+
       //console.log(data)
       // dispatch({type: "LOAD_DEFINITON", definition: data.definition});
     });
-
-    document.getElementById("answer").innerHTML = "";
+    document.getElementById("answer").value = "";
   };
 
   class StrikeCount extends React.Component {
@@ -90,7 +90,7 @@ let Play = ({
                     <Col className="strike">X</Col>
                     <Col className="strike">X</Col>
                     <Col className="strike">X</Col>
-                    <button onClick = { () => checkStrike()} >Replay</button>
+                    <button onClick={() => checkStrike()}>Replay</button>
                   </Row>
                 );
               default:
@@ -104,90 +104,83 @@ let Play = ({
 
   return (
     <Container>
-    {(strike === 3 ) 
-    ? 
-    
-    <GameOverContainer/> 
-    
-    : 
+      {strike === 3 ? (
+        <GameOverContainer />
+      ) : (
+        <Row>
+          <Col className="p-4" sm={8}>
+            <h2 className="center">Correctly Define and Spell:</h2>
 
+            <div className="definitionContainer p-4">
+              <br />
+              {definition}
+            </div>
+            <Row>
+              <Col />
+              <Col>
+                <form>
+                  <input id="answer" className="definitionAnswer" type="text" />
+                  <button
+                    className="btn-info btn-block btn-lg"
+                    onClick={e => submitAnswer(e)}
+                  >
+                    Submit
+                  </button>
+                </form>
+              </Col>
+              <Col />
+            </Row>
 
-      <Row>
-        <Col className="p-4" sm={8}>
-          <h2 className="center">Correctly Define and Spell:</h2>
+            <Row>
+              <Col />
+              <Col>
+                <CountDownTimer />
+              </Col>
 
-          <div className="definitionContainer p-4">
-            <br />
-            { definition } 
-          </div>
-          <Row>
-            <Col />
-            <Col>
-              <form>
-                <input id="answer" className="definitionAnswer" type="text" />
+              <Col />
+            </Row>
+
+            <Row>
+              <Col />
+              <Col>
                 <button
-                  className="btn-info btn-block btn-lg"
-                  onClick={e => submitAnswer(e)}
+                  className="btn-warning btn-md btn-block"
+                  onClick={() => startGame()}
                 >
-                  Submit
+                  Play
                 </button>
-              </form>
-            </Col>
-            <Col />
-          </Row>
-
-          <Row>
-            <Col />
-            <Col>
-              <CountDownTimer />
-            </Col>
-
-            <Col />
-          </Row>
-
-          <Row>
-            <Col />
-            <Col>
-              <button
-                className="btn-warning btn-md btn-block"
-                onClick={() => startGame()}
-              >
-                Play
-              </button>
-            </Col>
-            <Col />
-          </Row>
-        </Col>
-        <Col sm={4}>
-          <Jumbotron className="jumboChalkboard">
-            <Col>
-              <h2 className="homeChalkWhite">SCOREBOARD</h2>
-              <p>{score} points</p>
-              <hr />
-              <Row className="strikesBox">
-                <Col>
-                  <h3>STRIKES</h3>
-                  <StrikeCount />
-                  {console.log("the count is " + strike)}
-                </Col>
-                <Col>
-                  <h3>SKIPS</h3>
-                  <Row className="skipCount">
-                    <Col className="skip">S</Col>
-                    <Col className="skip">S</Col>
-                    <Col className="skip">S</Col>
-                  </Row>{" "}
-                </Col>
-
+              </Col>
+              <Col />
+            </Row>
+          </Col>
+          <Col sm={4}>
+            <Jumbotron className="jumboChalkboard">
+              <Col>
+                <h2 className="homeChalkWhite">SCOREBOARD</h2>
+                <p>{score} points</p>
                 <hr />
-              </Row>
-            </Col>
-          </Jumbotron>
-        </Col>
-      </Row>
+                <Row className="strikesBox">
+                  <Col>
+                    <h3>STRIKES</h3>
+                    <StrikeCount />
+                    {console.log("the count is " + strike)}
+                  </Col>
+                  <Col>
+                    <h3>SKIPS</h3>
+                    <Row className="skipCount">
+                      <Col className="skip">S</Col>
+                      <Col className="skip">S</Col>
+                      <Col className="skip">S</Col>
+                    </Row>{" "}
+                  </Col>
 
-
-    }
+                  <hr />
+                </Row>
+              </Col>
+            </Jumbotron>
+          </Col>
+        </Row>
+      )}
     </Container>
   );
 };

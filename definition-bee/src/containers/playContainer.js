@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch)=>{
         loadGame : (definition) => dispatch({ type: "LOAD_GAME", definition: definition }),
         answer : (answer) => dispatch({ type: "CHECK_ANSWER", submittedAnswer : answer }),
         loadDefinition : (definition) => {
-            console.log()
+            console.log(definition)   
             dispatch({ type: "LOAD_DEFINITION" , definition: definition})
         },
         skip : () => dispatch({ type: "SKIP" }),

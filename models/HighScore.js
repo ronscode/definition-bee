@@ -1,9 +1,9 @@
 const mongoose = require ('mongoose') 
 const Schema = mongoose.Schema;
 
-let HighScoreSchema = new Schema ({
+let HighestScoreSchema = new Schema ({
     username : { type : String},
-    highSore : { type : Number}
+    highscore : { type : Number}
 })
 
-module.exports = mongoose.model('HighScore', HighScoreSchema);
+module.exports = mongoose.model('HighScore', HighestScoreSchema);

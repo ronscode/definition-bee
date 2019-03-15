@@ -29,7 +29,6 @@ let Play = ({
   definition,
   checkStrike
 }) => {
-
   const startGame = () => {
     axios
       .get("/definition/random")
@@ -49,7 +48,6 @@ let Play = ({
       //console.log(data)
       // dispatch({type: "LOAD_DEFINITON", definition: data.definition});
     });
-
     document.getElementById("answer").innerHTML = "";
   };
 
@@ -89,7 +87,7 @@ let Play = ({
                     <Col className="strike">X</Col>
                     <Col className="strike">X</Col>
                     <Col className="strike">X</Col>
-                    <button onClick = { () => checkStrike()} >Replay</button>
+                    <button onClick={() => startGame()}>Replay</button>
                   </Row>
                 );
               default:
@@ -109,7 +107,7 @@ let Play = ({
 
           <div className="definitionContainer p-4">
             <br />
-            {definition}
+            {strike === 3 ? "GAME OVER, YOUR SCORE WAS " + score : definition}
           </div>
           <Row>
             <Col />

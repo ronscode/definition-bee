@@ -1,5 +1,5 @@
 const Definition = require('../models/model')
-const HighScore = require('../models/HighScore')
+const Highscore = require('../models/highscore')
 const passport  = require ('passport')
 
 exports.test = (req,res)=> {
@@ -23,7 +23,7 @@ exports.product_create = function (req, res) {
 };
 
 exports.product_highscore = (req, res) =>{
-    let product = new HighScore(
+    let product = new Highscore(
         {
             username : req.body.username,
             highscore : req.body.highscore

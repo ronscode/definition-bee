@@ -16,6 +16,7 @@ import axios from "axios";
 import Timer from "react-compound-timer";
 import "./CountDownTimer";
 import CountDownTimer from "./CountDownTimer";
+import GameOverContainer from '../containers/gameOverContainer'
 
 let Play = ({
   loadDefinition,
@@ -103,13 +104,21 @@ let Play = ({
 
   return (
     <Container>
+    {(strike === 3 ) 
+    ? 
+    
+    <GameOverContainer/> 
+    
+    : 
+
+
       <Row>
         <Col className="p-4" sm={8}>
           <h2 className="center">Correctly Define and Spell:</h2>
 
           <div className="definitionContainer p-4">
             <br />
-            {definition}
+            { definition } 
           </div>
           <Row>
             <Col />
@@ -176,6 +185,9 @@ let Play = ({
           </Jumbotron>
         </Col>
       </Row>
+
+
+    }
     </Container>
   );
 };

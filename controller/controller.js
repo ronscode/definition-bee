@@ -1,4 +1,6 @@
 const Definition = require('../models/model')
+const HighScore = require('../models/HighScore')
+const passport  = require ('passport')
 
 exports.test = (req,res)=> {
     res.send(`Greetings from your test controller!`);
@@ -20,16 +22,21 @@ exports.product_create = function (req, res) {
     })
 };
 
-//reads existing definition from id being sent in request from router 
-// exports.product_details = (req, res) =>{
-//     Definition.findById(req.params.id, function (err, def) {
-//         if (err)next(err);
-//         res.send(def);
-//         //console.log(definition)
-//     })
+exports.product_highscore = (req, res) =>{
+    let product = new HighScore(
+        {
+            username : req.body.username,
+            highscore : req.body.highscore
+        }
+    );
 
-// };
-
+    product.save(function (err) {
+        if (err) {
+            return next(err);
+        }
+        res.send('Product Created successfully')
+    })
+}
 
 exports.random_details = (req, res) =>{
     Definition.findOneRandom( (err, definition) => {
@@ -37,5 +44,20 @@ exports.random_details = (req, res) =>{
         else res.send(definition);
     })
 };
+
+
+exports.login_details = (req, res) =>{
+    res.send("logging in with google");
+    //handle with passport
+};
+
+exports.logout_details = (req,res) =>{
+    res.send('logging out goodbye')
+    //handle with passport
+}
+
+exports.google =  passport.authenticate('google', {
+      scope : ['profile']
+    })
 
 

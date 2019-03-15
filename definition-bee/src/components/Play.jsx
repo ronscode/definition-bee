@@ -29,6 +29,7 @@ let Play = ({
   definition,
   checkStrike
 }) => {
+
   const startGame = () => {
     axios
       .get("/definition/random")
@@ -43,15 +44,13 @@ let Play = ({
     e.preventDefault();
     let ans = document.getElementById("answer").value;
     answer(ans.toLowerCase());
-    checkStrike();
-
-    // console.log(e.target.value)
-    // dispatch({type: "ANSWER", submittedAnswer: e.target.value})
     axios.get("/definition/random").then(({ data }) => {
       loadDefinition(data);
       //console.log(data)
       // dispatch({type: "LOAD_DEFINITON", definition: data.definition});
     });
+
+    document.getElementById("answer").innerHTML = "";
   };
 
   class StrikeCount extends React.Component {
@@ -90,6 +89,7 @@ let Play = ({
                     <Col className="strike">X</Col>
                     <Col className="strike">X</Col>
                     <Col className="strike">X</Col>
+                    <button onClick = { () => checkStrike()} >Replay</button>
                   </Row>
                 );
               default:

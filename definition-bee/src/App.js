@@ -5,21 +5,21 @@ import PlayContainer from "./containers/playContainer";
 import About from "./components/About";
 import Login from "./components/Login";
 import Navbar from "./components/CustomNavbar";
-import { connect } from "react-redux";
-var unirest = require("unirest");
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div>
-          <Navbar />
-          <Route exact path="/" component={Home} />
-          <Route path="/play" component={PlayContainer} />
-          <Route path="/about" component={About} />
-          <Route path="/login" component={Login} />
-        </div>
-      </Router>
+      <div>
+        <Router>
+          <div>
+            <Navbar />
+            <Route exact path="/" component={Home} />
+            <Route path="/play" component={PlayContainer} />
+            <Route path="/about" component={About} />
+            <Route path="/login" component={Login} />
+          </div>
+        </Router>
+      </div>
     );
   }
 }

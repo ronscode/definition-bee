@@ -1,27 +1,5 @@
 // Action Creators for timer
 
-// function startTimer(baseTime = 0) {
-//     return {
-//       type: "START_TIMER",
-//       baseTime: baseTime,
-//       now: new Date().getTime()
-//     };
-//   }
-  
-//   function stopTimer() {
-//     return {
-//       type: "STOP_TIMER",
-//       now: new Date().getTime()
-//     };
-//   }
-  
-//   function resetTimer() {
-//     return {
-//       type: "RESET_TIMER",
-//       now: new Date().getTime()
-//     }
-//   }
-
 let initialState = {
     question: { 
 
@@ -40,7 +18,8 @@ let initialState = {
     stoppedAt: undefined,
     baseTime: undefined,
     currentUser: {
-        username: "lsjhfdsl"
+        username: "lsjhfdsl",
+        highscore: ''
     }
 }
 
@@ -50,27 +29,6 @@ let reducer = (state = initialState, actions) =>{
     let { type, submittedAnswer, definition } = actions
     switch(type){
         
-        // case "RESET_TIMER":
-        // return {
-        //     ...state,
-        //     baseTime: 0,
-        //     startedAt: state.startedAt ? type.now : undefined,
-        //     stoppedAt: state.stoppedAt ? type.now : undefined
-        // };
-
-        // case "START_TIMER":
-        // return {
-        //     ...state,
-        //     baseTime: type.baseTime,
-        //     startedAt: type.now,
-        //     stoppedAt: undefined
-        // };
-
-        // case "STOP_TIMER":
-        // return {
-        //     ...state,
-        //     stoppedAt: type.now
-        // }
 
         case "LOAD_GAME" :
         /**
@@ -152,6 +110,12 @@ let reducer = (state = initialState, actions) =>{
             return{
                 ...state
             }
+        }
+
+
+        case "GAME_OVER": 
+        return {
+            ...state
         }
 
         default :

@@ -134,7 +134,9 @@ let Play = ({
             <Row>
               <Col />
               <Col>
-                <CountDownTimer />
+                <div id="cdt">
+                  <CountDownTimer />
+                </div>
               </Col>
 
               <Col />

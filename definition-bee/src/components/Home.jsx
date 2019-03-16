@@ -17,22 +17,22 @@ export default class Home extends Component {
             You'll need it.
           </p>
           <Link to="/play">
-            <Button variant="warning">Click here if you're ready...</Button>
+            <button className="btn-warning">
+              Click here if you're ready...
+            </button>
           </Link>
         </Jumbotron>
         <Row>
-          <Col md={{ span: 6, offset: 3 }}>
-            
-          </Col>
+          <Col md={{ span: 6, offset: 3 }} />
         </Row>
-        <Row> 
-            <Col>
+        <Row>
+          <Col>
             <h2>Top 10 Definers</h2>
-            </Col>
-            <Col>
+          </Col>
+          <Col>
             <h2>Last 10 Scores</h2>
-             <LastGames />
-            </Col>
+            <LastGames />
+          </Col>
         </Row>
       </Container>
     );

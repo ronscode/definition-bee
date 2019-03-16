@@ -9,7 +9,7 @@ export default class CustomNavbar extends Component {
         <Navbar.Brand href="/">
           <img
             alt=""
-            src="/logo.svg"
+            src="/bee.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
